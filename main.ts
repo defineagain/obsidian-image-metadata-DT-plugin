@@ -63,5 +63,20 @@ export default class ImageMetadataPlugin extends Plugin {
             image.imageDescription = descriptionInput.value;
             this.readerWriter.writeFile(file, image);
         });
+
+        viewContent.createDiv({
+            cls: 'image-metadata__tag-name',
+            text: 'User Comment'
+        });
+
+        const userCommentInput = viewContent.createEl('textarea', {
+            cls: 'image-metadata__tag-value',
+            text: image.userComment
+        });
+
+        userCommentInput.addEventListener('change', () => {
+            image.userComment = userCommentInput.value;
+            this.readerWriter.writeFile(file, image);
+        });
     }
 }

@@ -71,6 +71,14 @@ export class PngFile implements FileFormat {
         this.chunks[this.xmpChunkIndex].data = encodeSync(this.xmpChunkData);
     }
 
+    get userComment(): string {
+        return "";
+    }
+
+    set userComment(s: string) {
+        // Not implemented
+    }
+
     toBuffer(): Buffer {
         const chunksToWrite = (this.isNewXmpChunk && this.imageDescription === "") ?
             this.chunks.filter((_, index) => index !== this.xmpChunkIndex) :
